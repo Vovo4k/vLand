@@ -1,7 +1,8 @@
+import flixel.FlxGame;
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.ui.FlxButton;
-import flixel.FlxG;
 
 class MenuState extends FlxState {
     var background: FlxSprite;
@@ -37,10 +38,12 @@ class MenuState extends FlxState {
     }
 
     private function onSingleplayerClick(): Void {
-        // Create a new state for the character selection screen
-        var characterSelectionState = new CharacterSelectionState();
+        // Implement your logic for the singleplayer button click here
+    }
+}
 
-        // Switch to the character selection state
-        FlxG.switchState(characterSelectionState);
+class Main extends FlxGame {
+    public function new() {
+        super(640, 480, MenuState);
     }
 }
