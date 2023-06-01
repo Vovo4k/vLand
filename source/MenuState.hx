@@ -2,11 +2,6 @@ import flixel.FlxState;
 import flixel.FlxSprite;
 import flixel.ui.FlxButton;
 import flixel.FlxG;
-import sys.io.File;
-import haxe.Json;
-import flixel.text.FlxText;
-
-
 
 class MenuState extends FlxState {
     var background: FlxSprite;
@@ -16,7 +11,6 @@ class MenuState extends FlxState {
     override public function create(): Void {
         super.create();
         createUI();
-        loadNickname();
     }
 
     private function createUI(): Void {
@@ -48,20 +42,5 @@ class MenuState extends FlxState {
 
         // Switch to the character selection state
         FlxG.switchState(characterSelectionState);
-    }
-
-    private function loadNickname(): Void {
-        var fileName: String = "assets/data/person/nick.json";
-        var fileContent: String = File.getContent(fileName);
-
-        if (fileContent != null && fileContent != "") {
-            var jsonData: Dynamic = Json.parse(fileContent);
-            if (jsonData.nickname != null) {
-                var nickname: String = jsonData.nickname;
-                var nicknameText: FlxText = new FlxText(0, FlxG.height - 100, FlxG.width, "Nickname: " + nickname);
-                nicknameText.setFormat(null, 24, 0xffffff, "center");
-                add(nicknameText);
-            }
-        }
     }
 }
